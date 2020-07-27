@@ -10,8 +10,13 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <depend>gazebo_ros</depend>
+  <depend>gazebo</depend>
   <depend>roscpp</depend>
   <depend>camera_info_manager</depend>
+  <depend>image_transport</depend>
+  <depend>sensor_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>rostest</depend>
   <exec_depend>depth_image_proc</exec_depend>
 
   <export>
