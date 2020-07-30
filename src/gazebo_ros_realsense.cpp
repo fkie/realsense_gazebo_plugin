@@ -43,8 +43,8 @@ void GazeboRosRealsense::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   this->itnode_ = new image_transport::ImageTransport(*this->rosnode_);
 
   this->color_pub_ = this->itnode_->advertiseCamera("color/image_raw", 2);
-  this->ir1_pub_ = this->itnode_->advertiseCamera("ir/image_raw", 2);
-  this->ir2_pub_ = this->itnode_->advertiseCamera("ir2/image_raw", 2);
+  this->ir1_pub_ = this->itnode_->advertiseCamera("infra1/image_raw", 2);
+  this->ir2_pub_ = this->itnode_->advertiseCamera("infra2/image_raw", 2);
   this->depth_pub_ = this->itnode_->advertiseCamera("depth/image_raw", 2);
 }
 
@@ -67,7 +67,7 @@ void GazeboRosRealsense::OnNewFrame(const rendering::CameraPtr cam,
   const auto image_pub = camera_publishers.at(camera_id);
 
   // copy data into image
-  this->image_msg_.header.frame_id = prefix+camera_id;
+  this->image_msg_.header.frame_id = prefix + "_" + camera_id + "_optical_frame";
   this->image_msg_.header.stamp.sec = current_time.sec;
   this->image_msg_.header.stamp.nsec = current_time.nsec;
 
@@ -109,7 +109,8 @@ void GazeboRosRealsense::OnNewDepthFrame()
   RealSensePlugin::OnNewDepthFrame();
 
   // copy data into image
-  this->depth_msg_.header.frame_id = prefix+COLOR_CAMERA_NAME;
+  //this->depth_msg_.header.frame_id = prefix + "_" + DEPTH_CAMERA_NAME + "_optical_frame";//+COLOR_CAMERA_NAME; // FIXME: Why was this COLOR_CAMERA_NAME?
+  this->depth_msg_.header.frame_id = prefix + "_" + COLOR_CAMERA_NAME + "_optical_frame"; // FIXME: Wrong frame, but otherwise ROS cannot process it correctly
   this->depth_msg_.header.stamp.sec = current_time.sec;
   this->depth_msg_.header.stamp.nsec = current_time.nsec;
 
