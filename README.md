@@ -1,6 +1,8 @@
 # Intel RealSense Gazebo ROS plugin and model
+The package is cloned from https://github.com/SyrianSpock/realsense_gazebo_plugin.
+We made it [catkin_lint](https://github.com/fkie/catkin_lint) friendly and changed the topic names to match with that of our actual sensor. 
 
-Simulattion of the Realsense R200 sensor in Gazebo.
+Simulation of the Realsense R200 sensor in Gazebo.
 
 ## Quickstart
 
@@ -45,10 +47,10 @@ You can reuse this to plug the sensor in the robot of your choice.
 
 This requires Gazebo 6 or higher and catkin tools for building.
 
-The package has been tested on ROS melodic on Ubuntu 18.04 with Gazebo 9.
+The package has been tested on ROS melodic on Ubuntu 18.04 with Gazebo 9 and ROS Noetic on Ubuntu 20.04 with Gazebo 11.10.2. 
 
 ## Acknowledgement
 
-This is continuation of work done by [guiccbr](https://github.com/guiccbr/) for Intel Corporation.
+This is continuation of work done by [SyrianSpock](https://github.com/SyrianSpock/realsense_gazebo_plugin) and [guiccbr](https://github.com/guiccbr/) for Intel Corporation.
 
 Thanks to [Danfoa](https://github.com/Danfoa) for contributing the URDF integration.
